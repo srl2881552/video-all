@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.play.video.impl.mapper.VideoTagMapper" >
+  <resultMap id="BaseResultMap" type="org.play.video.impl.entity.VideoTag" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="tag_text" property="tagText" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+	
+  </resultMap>
+  
+  
+ 
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from video_tag
+  </select>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from video_tag where id=#{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectListPage" resultMap="BaseResultMap" >
+    select * from video_tag
+    where 1=1
+		
+		order by create_at desc
+  </select>
+  <insert id="insert" parameterType="org.play.video.impl.entity.VideoTag" >
+  	insert into video_tag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tagText != null" >
+        tag_text,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+     <if test="id != null" >
+       #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tagText != null" >
+       #{tagText,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+       #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+       #{createAt,jdbcType=TIMESTAMP},
+      </if>
+     
+    </trim>
+  </insert>
+  <update id="update" parameterType="org.play.video.impl.entity.VideoTag" >
+    update video_tag
+    <set >
+    <if test="tagText != null" >
+       tag_text=#{tagText,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+       status=#{status,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+       create_at=#{createAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from video_tag
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+</mapper>

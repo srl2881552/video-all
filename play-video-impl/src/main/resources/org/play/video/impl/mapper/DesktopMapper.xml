@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.play.video.impl.mapper.DesktopMapper" >
+  <resultMap id="BaseResultMap" type="org.play.video.impl.entity.Desktop" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="about" property="about" jdbcType="VARCHAR" />
+	<result column="cate_id" property="cateId" jdbcType="VARCHAR" />
+	<result column="cate_name" property="cateName" jdbcType="VARCHAR" />
+	<result column="rtmp" property="rtmp" jdbcType="VARCHAR" />
+	<result column="stream" property="stream" jdbcType="VARCHAR" />
+	<result column="status" property="status" jdbcType="INTEGER" />
+	<result column="message" property="message" jdbcType="VARCHAR" />
+	<result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+	<result column="top_image" property="topImage" jdbcType="VARCHAR" />
+	<result column="image_name" property="imageName" jdbcType="VARCHAR" />
+	<result column="type" property="type" jdbcType="INTEGER" />
+	<result column="video_length" property="videoLength" jdbcType="VARCHAR" />
+	<result column="chick" property="chick" jdbcType="BIGINT" />
+  </resultMap>
+  
+  
+ 
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from v_desktop
+  </select>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from v_desktop where id=#{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectListPage" resultMap="BaseResultMap" >
+    select * from v_desktop
+    where 1=1
+		
+		order by create_at desc
+  </select>
+  <insert id="insert" parameterType="org.play.video.impl.entity.Desktop" >
+  	insert into v_desktop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="about != null" >
+        about,
+      </if>
+      <if test="cateId != null" >
+        cate_id,
+      </if>
+      <if test="cateName != null" >
+        cate_name,
+      </if>
+      <if test="rtmp != null" >
+        rtmp,
+      </if>
+      <if test="stream != null" >
+        stream,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="topImage != null" >
+        top_image,
+      </if>
+      <if test="imageName != null" >
+        image_name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="videoLength != null" >
+        video_length,
+      </if>
+      <if test="chick != null" >
+        chick,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+     <if test="id != null" >
+       #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+       #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+       #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+       #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="about != null" >
+       #{about,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+       #{cateId,jdbcType=VARCHAR},
+      </if>
+      <if test="cateName != null" >
+       #{cateName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmp != null" >
+       #{rtmp,jdbcType=VARCHAR},
+      </if>
+      <if test="stream != null" >
+       #{stream,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+       #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+       #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+       #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topImage != null" >
+       #{topImage,jdbcType=VARCHAR},
+      </if>
+      <if test="imageName != null" >
+       #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+       #{type,jdbcType=INTEGER},
+      </if>
+      <if test="videoLength != null" >
+       #{videoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="chick != null" >
+       #{chick,jdbcType=BIGINT},
+      </if>
+     
+    </trim>
+  </insert>
+  <update id="update" parameterType="org.play.video.impl.entity.Desktop" >
+    update v_desktop
+    <set >
+    
+      
+      
+      <if test="userId != null" >
+       user_id=#{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+       nick_name=#{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+       title=#{title,jdbcType=VARCHAR},
+      </if>
+      <if test="about != null" >
+       about=#{about,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+      cate_id= #{cateId,jdbcType=VARCHAR},
+      </if>
+      <if test="cateName != null" >
+       cate_name=#{cateName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtmp != null" >
+       rtmp=#{rtmp,jdbcType=VARCHAR},
+      </if>
+      <if test="stream != null" >
+       stream=#{stream,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+       status=#{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+       message=#{message,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+       create_at=#{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topImage != null" >
+       top_image=#{topImage,jdbcType=VARCHAR},
+      </if>
+      <if test="imageName != null" >
+       image_name=#{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+       type=#{type,jdbcType=INTEGER},
+      </if>
+      <if test="videoLength != null" >
+       video_length=#{videoLength,jdbcType=VARCHAR},
+      </if>
+      <if test="chick != null" >
+       chick=#{chick,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from v_desktop
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+</mapper>
